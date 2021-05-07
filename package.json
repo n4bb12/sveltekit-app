@@ -1,15 +1,29 @@
 {
-  "name": "~TODO~",
-  "version": "0.0.1",
+  "$schema": "https://json.schemastore.org/package",
+  "name": "sveltekit-app",
+  "version": "0.0.0-development",
+  "private": true,
+  "repository": "git@github.com:n4bb12/sveltekit-app.git",
+  "license": "ISC",
+  "author": "Abraham Schilling",
+  "type": "module",
   "scripts": {
-    "dev": "svelte-kit dev",
     "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
+    "dev": "svelte-kit dev",
+    "format": "prettier --write --plugin-search-dir=. .",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "start": "svelte-kit preview"
+  },
+  "dependencies": {
+    "@fontsource/fira-mono": "^4.2.2",
+    "cookie": "^0.4.1",
+    "nanoid": "^3.1.22"
   },
   "devDependencies": {
+    "@sveltejs/adapter-node": "next",
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
+    "@types/cookie": "^0.4.0",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
@@ -22,11 +36,5 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0",
     "vite": "^2.1.0"
-  },
-  "type": "module",
-  "dependencies": {
-    "@fontsource/fira-mono": "^4.2.2",
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
   }
 }

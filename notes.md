@@ -1,0 +1,45 @@
+https://kit.svelte.dev/docs
+
+- routes https://kit.svelte.dev/docs#routing-pages
+  - `routes/NAME.svelte`
+  - `routes/subdir/NAME.svelte`
+  - `routes/[param].svelte`
+  - `routes/[...catchAll].svelte`
+- data loading https://kit.svelte.dev/docs#loading
+  - `export async function load({ page, fetch, session, context }) {`
+- api routes https://kit.svelte.dev/docs#routing-endpoints
+  - `routes/ENDPOINT.json.ts`
+  - `_not-a-route.ts`
+- layouts https://kit.svelte.dev/docs#layouts
+  - `$layout.svelte`
+  - `subdir/$layout.svelte`
+  - `$layout.reset.svelte`
+- error pages https://kit.svelte.dev/docs#layouts-error-pages
+  - `$error.svelte`
+  - `subdir/$error.svelte`
+- hooks https://kit.svelte.dev/docs#hooks
+  - `handle({ request, render })`
+  - `getSession(request)`
+- flags https://kit.svelte.dev/docs#ssr-and-javascript
+  - `export const ssr = true`
+  - `export const router = true`
+  - `export const hydrate = true`
+  - `export const prerender = true`
+- anchor options https://kit.svelte.dev/docs#anchor-options
+  - `<a sveltekit:prefetch href=`
+  - `<a sveltekit:noscroll href=`
+  - `<a rel="external" href=`
+- custom window events https://kit.svelte.dev/docs#events
+  - `window.addEventListener("sveltekit:start", console.log)`
+  - `window.addEventListener("sveltekit:navigation-start", console.log)`
+  - `window.addEventListener("sveltekit:navigation-end", console.log)`
+- `$app/*` https://kit.svelte.dev/docs#modules
+  - `import { amp, browser, dev, prerendering } from '$app/env';`
+  - `import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';`
+  - `import { base, assets } from '$app/paths';`
+  - `import { getStores, navigating, page, session } from '$app/stores';`
+- `$service-worker/*` https://kit.svelte.dev/docs#modules
+  - `import { build, files, timestamp } from '$service-worker';`
+- built-in asset imports and hashing
+- project configuration https://kit.svelte.dev/docs#configuration
+- build adapters https://kit.svelte.dev/docs#adapters

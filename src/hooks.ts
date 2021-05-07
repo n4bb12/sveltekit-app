@@ -1,23 +1,28 @@
-import cookie from 'cookie';
-import { v4 as uuid } from '@lukeed/uuid';
-import type { Handle } from '@sveltejs/kit';
+import { dev } from "$app/env"
+import cookie from "cookie"
+import { nanoid } from "nanoid"
+
+import type { GetSession, Handle } from "@sveltejs/kit"
 
 export const handle: Handle = async ({ request, render }) => {
-	const cookies = cookie.parse(request.headers.cookie || '');
-	request.locals.userid = cookies.userid || uuid();
+  const cookies = cookie.parse(request.headers.cookie || "")
+  const userid = cookies.userid || nanoid()
 
-	// TODO https://github.com/sveltejs/kit/issues/1046
-	if (request.query.has('_method')) {
-		request.method = request.query.get('_method').toUpperCase();
-	}
+  request.locals.userid = userid
 
-	const response = await render(request);
+  const response = await render(request)
 
-	if (!cookies.userid) {
-		// if this is the first time the user has visited this app,
-		// set a cookie so that we recognise them when they return
-		response.headers['set-cookie'] = `userid=${request.locals.userid}; Path=/; HttpOnly`;
-	}
+  if (!cookies.userid) {
+    response.headers["set-cookie"] = cookie.serialize("userid", userid, {
+      path: "/",
+      httpOnly: true,
+      secure: !dev,
+    })
+  }
 
-	return response;
-};
+  return response
+}
+
+export const getSession: GetSession = async (request) => {
+  return { foo: "bar" }
+}
